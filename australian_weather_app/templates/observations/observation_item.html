@@ -1,0 +1,75 @@
+<table>
+    <tr>
+        <th>Observer: </th>
+        <td>{{ observation.observer }}</td>
+    </tr>
+    <tr>
+        <th>Date: </th>
+        <td>{{ observation.date }}</td>
+    </tr>
+    <tr>
+        <th>Location: </th>
+        <td>{{ observation.get_location_display }}</td>
+    </tr>
+    <tr>
+        <th>Minimum temperature: </th>
+        <td>{{ observation.min_temp }}</td>
+    </tr>
+    <tr>
+        <th>Maximum temperature: </th>
+        <td>{{ observation.max_temp }}</td>
+    </tr>
+    <tr>
+        <th>Temperature (9 am): </th>
+        <td>{{ observation.temp_9am }}</td>
+    </tr>
+    <tr>
+        <th>Temperature (3 pm): </th>
+        <td>{{ observation.temp_3pm }}</td>
+    </tr>
+    <tr>
+        <th>Wind gust direction: </th>
+        <td>{{ observation.get_wind_gust_dir_display }}</td>
+    </tr>
+    <tr>
+        <th>Wind gust speed: </th>
+        <td>{{ observation.wind_gust_speed }}</td>
+    </tr>
+    <tr>
+        <th>Wind direction (9 am): </th>
+        <td>{{ observation.get_wind_dir_9am_display }}</td>
+    </tr>
+    <tr>
+        <th>Wind speed (9 am): </th>
+        <td>{{ observation.wind_speed_9am }}</td>
+    </tr>
+    <tr>
+        <th>Wind direction (3 pm): </th>
+        <td>{{ observation.get_wind_dir_3pm_display }}</td>
+    </tr>
+    <tr>
+        <th>Wind speed (3 pm): </th>
+        <td>{{ observation.wind_speed_3pm }}</td>
+    </tr>
+    <tr>
+        <th>Humidity (9 am): </th>
+        <td>{{ observation.humidity_9am }}</td>
+    </tr>
+    <tr>
+        <th>Humidity (3 pm): </th>
+        <td>{{ observation.humidity_3pm }}</td>
+    </tr>
+    <tr>
+        <th>Rainfall: </th>
+        <td>{{ observation.rainfall }}</td>
+    </tr>
+    <tr>
+        <th>Rain today: </th>
+        <td>{% if observation.rain_today %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </td>
+    </tr>
+</table>

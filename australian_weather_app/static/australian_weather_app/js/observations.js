@@ -21,6 +21,7 @@ remove = (id, url) => {
         data: { 'observation_id': id },
         success: () =>{
             alert("Observation successfully deleted.")
+            location.reload();
         }
     });
 }

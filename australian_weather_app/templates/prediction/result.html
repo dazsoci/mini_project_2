@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Rainfall result{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <h2>Prediction result</h2>
+  <div class="prediction-result-container">
+    <div class="observation-list-item">
+      {% include 'observations/observation_item.html'%}
+    </div>
+    <div class="result-container">
+      {% if result %}
+      Based on this observation, <b>it will (was going to) rain</b> the next day.
+      {% else %}
+      Based on this observation, <b>it will not (was not going to) rain</b> the next day.
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

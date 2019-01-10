@@ -1,7 +1,9 @@
 :root {
     --navbar-bg-color: #3d6614;
     --default-font-color: rgb(31, 53, 9);
-    --default-field-bg-color: #c0ccb3;
+    --default-bg-color: #adcc8d;
+    --result-color: #9fb489;
+    --result-font-color: #4a5242;
 }
   
 .content-container{
@@ -17,7 +19,7 @@ p, label, span{
 }
 
 input {
-    background: var(--default-field-bg-color);
+    background: var(--default-bg-color);
     color: var(--default-font-color)
 }
 
@@ -36,4 +38,41 @@ table td {
 .date-inputs-container{
     display: flex;
     flex-direction: row;
+}
+
+.observation-list {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.observation-list-item {
+    margin: 5px;
+    padding: 20px;
+    background: var(--default-bg-color);
+    border-radius: 15px;
+    min-width: 360px;
+    max-width: 360px;
+}
+
+.result-container{
+    margin: 5px;
+    padding: 20px;
+    background: var(--result-color);
+    color: var(--result-font-color);
+    border-radius: 15px;
+    min-width: 360px;
+    max-width: 360px;
+    height: 100px;
+}
+
+.prediction-result-container{
+    display: flex;
+    flex-direction: row;
+    max-width: 360px;
+}
+
+.float-right{
+    float: right;
 }

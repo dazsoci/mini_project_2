@@ -15,19 +15,17 @@
         delete_url = "{% url 'delete_observation' %}"
     </script>
     {% if observations %}
-    <div class="">
+    <div class="observation-list">
         {% for observation in observations %}
+        <div class="observation-list-item">
+            {% include 'observations/observation_item.html'%}
 
-        <div>
-            <table>
-                <tr>
-                    <th>Date: </th>
-                    <td>{{ observation.date }}</td>
-                </tr>
-
-            </table>
-            <a href={% url 'edit_observation' observation.id %} class='btn btn-primary'>Edit</a>
-            <button class='btn btn-primary' onclick="remove('{{ observation.id }}', delete_url)">Remove</button>
+            {% if observation.observer.id == user.id %}
+            <div class="float-right">
+                <a href={% url 'edit_observation' observation.id %} class='btn btn-success'>Edit</a>
+                <button class='btn btn-success' onclick="remove('{{ observation.id }}', delete_url)">Remove</button>
+            </div>
+            {% endif %}
         </div>
 
         {% endfor %}
