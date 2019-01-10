@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% block extra_js %}
+<script src="{% static 'australian_weather_app/js/observations.js' %}"></script>
+{% endblock %}
+
+{% block title %}Manage observations{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2>Manage observations</h2>
+
+    <script type="text/javascript">
+        delete_url = "{% url 'delete_observation' %}"
+    </script>
+    {% if observations %}
+    <div class="">
+        {% for observation in observations %}
+
+        <div>
+            <table>
+                <tr>
+                    <th>Date: </th>
+                    <td>{{ observation.date }}</td>
+                </tr>
+
+            </table>
+            <a href={% url 'edit_observation' observation.id %} class='btn btn-primary'>Edit</a>
+            <button class='btn btn-primary' onclick="remove('{{ observation.id }}', delete_url)">Remove</button>
+        </div>
+
+        {% endfor %}
+
+        {% else %}
+        Nothing to display
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

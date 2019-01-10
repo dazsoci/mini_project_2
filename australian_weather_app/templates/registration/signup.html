@@ -1,0 +1,18 @@
+{% extends 'account_management_base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<div class="content-container">
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button class="btn btn-primary" type="submit">Sign up</button>
+  </form>
+</div>
+{% endblock %}

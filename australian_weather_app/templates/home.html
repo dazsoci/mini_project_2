@@ -1,0 +1,13 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <h2>Hi {{ user.username }}!</h2>
+
+  <p>Are you ready to predict some rainfall and manage observations?</p>
+  <p>Have a nice day! :)</p>
+</div>
+{% endblock %}

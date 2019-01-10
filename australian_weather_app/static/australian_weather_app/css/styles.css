@@ -1,0 +1,39 @@
+:root {
+    --navbar-bg-color: #3d6614;
+    --default-font-color: rgb(31, 53, 9);
+    --default-field-bg-color: #c0ccb3;
+}
+  
+.content-container{
+    padding: 25px;
+}
+
+label {
+    padding-right: 15px;
+}
+
+p, label, span{
+    color: var(--default-font-color)
+}
+
+input {
+    background: var(--default-field-bg-color);
+    color: var(--default-font-color)
+}
+
+h2 {
+    padding-bottom: 15px;
+}
+
+table th, td {
+    vertical-align: top;
+}
+
+table td {
+    padding-bottom: 15px;
+}
+
+.date-inputs-container{
+    display: flex;
+    flex-direction: row;
+}

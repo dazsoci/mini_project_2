@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Rainfall prediction{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <h2>Make rainfall prediction</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {% include 'observations/observation_fields.html'%}
+    <button class="btn btn-primary" type="submit">Predict</button>
+  </form>
+</div>
+{% endblock %}
