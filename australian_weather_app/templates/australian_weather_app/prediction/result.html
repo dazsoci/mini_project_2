@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'australian_weather_app/base.html' %}
 
 {% block title %}Rainfall result{% endblock %}
 
@@ -7,7 +7,7 @@
   <h2>Prediction result</h2>
   <div class="prediction-result-container">
     <div class="observation-list-item">
-      {% include 'observations/observation_item.html'%}
+      {% include 'australian_weather_app/observations/observation_item.html'%}
     </div>
     <div class="result-container">
       {% if result %}

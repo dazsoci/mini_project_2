@@ -11,7 +11,6 @@ from australian_weather_app.forms import ObservationForm
 from joblib import load
 import pandas as pd
 import datetime
-import pickle
 import os
 
 # User management
@@ -26,7 +25,7 @@ class SignUp(generic.CreateView):
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'australian_weather_app/home.html')
 
 # Observation management
 
@@ -47,7 +46,7 @@ def add_observation(request):
     context = {
         'form': form
     }
-    return render(request, 'observations/add_observation.html', context)
+    return render(request, 'australian_weather_app/observations/add_observation.html', context)
 
 
 @login_required(login_url=reverse_lazy('login'))
@@ -58,7 +57,7 @@ def list_observations(request):
     context = {
         'observations': observations
     }
-    return render(request, 'observations/list_observations.html', context)
+    return render(request, 'australian_weather_app/observations/list_observations.html', context)
 
 
 @login_required(login_url=reverse_lazy('login'))
@@ -84,7 +83,7 @@ def edit_observation(request, observation_id):
         context = {
             'form': form
         }
-        return render(request, 'observations/edit_observation.html', context)
+        return render(request, 'australian_weather_app/observations/edit_observation.html', context)
 
 
 @login_required(login_url=reverse_lazy('login'))
@@ -156,11 +155,11 @@ def predict_rainfall(request):
                 'observation': observation,
                 'result': prediction
             }
-            return render(request, "prediction/result.html", context)
+            return render(request, "australian_weather_app/prediction/result.html", context)
     elif request.method == "GET":
         form = ObservationForm()
 
         context = {
             'form': form
         }
-        return render(request, 'prediction/predict_rainfall.html', context)
+        return render(request, 'australian_weather_app/prediction/predict_rainfall.html', context)

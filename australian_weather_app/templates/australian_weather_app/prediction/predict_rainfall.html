@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'australian_weather_app/base.html' %}
 
 {% block title %}Rainfall prediction{% endblock %}
 
@@ -10,7 +10,7 @@
     {% csrf_token %}
     <div class="col-md-8">
 
-      {% include 'observations/observation_fields.html'%}
+      {% include 'australian_weather_app/observations/observation_fields.html'%}
 
       <button class="btn btn-success float-right" type="submit">Predict</button>
     </div>

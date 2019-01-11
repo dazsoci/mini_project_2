@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'australian_weather_app/base.html' %}
 
 {% load staticfiles %}
 {% block extra_js %}
@@ -18,7 +18,7 @@
     <div class="observation-list">
         {% for observation in observations %}
         <div class="observation-list-item">
-            {% include 'observations/observation_item.html'%}
+            {% include 'australian_weather_app/observations/observation_item.html'%}
 
             {% if observation.observer.id == user.id %}
             <div class="float-right">
@@ -31,7 +31,9 @@
         {% endfor %}
 
         {% else %}
-        Nothing to display
+        <div class="observation-list-item">
+            There are no observations yet to be display.
+        </div>
         {% endif %}
     </div>
 </div>
