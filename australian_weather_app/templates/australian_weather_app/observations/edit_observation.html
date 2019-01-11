@@ -8,8 +8,12 @@
 
   <form method="post">
     {% csrf_token %}
-    {% include 'australian_weather_app/observations/observation_fields.html'%}
-    <button class="btn btn-success" type="submit">Save</button>
+    <div class="col-md-8">
+      {% include 'australian_weather_app/observations/observation_fields.html'%}
+      <div class="float-right">
+        <button class="btn btn-success" type="submit">Save</button>
+      </div>
+    </div>
   </form>
 </div>
 {% endblock %}

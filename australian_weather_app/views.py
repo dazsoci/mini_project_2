@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound, HttpResponseBadRequest
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -46,7 +46,8 @@ def add_observation(request):
     context = {
         'form': form
     }
-    return render(request, 'australian_weather_app/observations/add_observation.html', context)
+    return render(request, \
+        'australian_weather_app/observations/add_observation.html', context)
 
 
 @login_required(login_url=reverse_lazy('login'))
@@ -57,7 +58,8 @@ def list_observations(request):
     context = {
         'observations': observations
     }
-    return render(request, 'australian_weather_app/observations/list_observations.html', context)
+    return render(request, \
+        'australian_weather_app/observations/list_observations.html', context)
 
 
 @login_required(login_url=reverse_lazy('login'))
@@ -80,19 +82,26 @@ def edit_observation(request, observation_id):
         observation = get_object_or_404(Observation, id=observation_id)
 
         form = ObservationForm(instance=observation)
-        context = {
-            'form': form
-        }
-        return render(request, 'australian_weather_app/observations/edit_observation.html', context)
+    context = {
+        'form': form
+    }
+    return render(request, 'australian_weather_app/observations/edit_observation.html', context)
 
 
 @login_required(login_url=reverse_lazy('login'))
 def delete_observation(request):
-    observation_id = request.POST["observation_id"]
-    Observation.objects.filter(id=observation_id).delete()
+    if request.method == 'POST':
+        observation_id = request.POST.get("observation_id", None)
+        observation = Observation.objects.filter(id=observation_id)
 
-    return HttpResponseRedirect(reverse('list_observations'))
+        if not observation_id:
+            return HttpResponseBadRequest('<h1>Bad request.</h1>')
 
+        if observation:
+            observation.delete()
+            return HttpResponseRedirect(reverse('list_observations'))
+
+        return HttpResponseNotFound('<h1>Page not found</h1>')
 
 def get_season(d):
     if d.month >= 12 and d.month < 3:

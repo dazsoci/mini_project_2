@@ -10,7 +10,7 @@ class ObservationForm(ModelForm):
 
     class Meta:
         model = Observation
-        exclude = ['observer', 'rain_tomorrow']
+        exclude = ['observer']
 
     def __init__(self, *args, **kwargs):
         super(ObservationForm, self).__init__(*args, **kwargs)
